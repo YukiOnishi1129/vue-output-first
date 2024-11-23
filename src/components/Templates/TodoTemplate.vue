@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import AddTodo from '../Organisms/AddTodo.vue'
+import TodoList from '../Organisms/TodoList.vue'
+import InputForm from '../Atoms/InputForm.vue'
 import { INIT_TODO_LIST, INIT_UNIQUE_ID } from '../../constants/data'
 
 const originTodoList = ref(INIT_TODO_LIST)
@@ -12,27 +14,18 @@ const searchKeyword = ref('')
 const showTodoList = computed(() => {
   return originTodoList.value.filter((todo) => {
     // 検索キーワードに部分一致したTodoだけを一覧表示する
-    const regexp = new RegExp('^' + searchKeyword, 'i')
+    const regexp = new RegExp('^' + searchKeyword.value, 'i')
     return todo.title.match(regexp)
   })
 })
 
-const onChangeAddInputValue = (e) => {
-  addInputValue.value = e.target.value
-}
-
 const handleAddTodo = (e) => {
-  if ((e.key = 'Enter' && addInputValue !== '')) {
-    const nextUniqueId = uniqueId + 1
-    const newTodoList = [
-      ...originTodoList.value,
-      {
-        id: nextUniqueId,
-        title: addInputValue.value,
-        isDone: false
-      }
-    ]
-    originTodoList.value = newTodoList
+  if (e.key === 'Enter' && addInputValue.value.trim() !== '') {
+    const nextUniqueId = uniqueId.value + 1
+    originTodoList.value.push({
+      id: nextUniqueId,
+      title: addInputValue.value.trim()
+    })
 
     // 採番IDを更新
     uniqueId.value = nextUniqueId
@@ -49,10 +42,6 @@ const handleDeleteTodo = (targetId, targetTitle) => {
     originTodoList.value = newTodoList
   }
 }
-
-const handleChangeSearchKeyword = (e) => {
-  searchKeyword.value = e.target.value
-}
 </script>
 
 <template>
@@ -61,12 +50,16 @@ const handleChangeSearchKeyword = (e) => {
   </div>
   <!-- Todo追加エリア -->
   <section class="common">
-    <AddTodo :addInputValue="addInputValue" :onChangeTodo="onChangeAddInputValue" :handleAddTodo="handleAddTodo" />
+    <AddTodo v-model:addInputValue="addInputValue" :onAddTodo="handleAddTodo" />
   </section>
   <!-- Todo フォームエリア -->
-  <section class="common"></section>
+  <section class="common">
+    <InputForm v-model="searchKeyword" :placeholder="`Search Keyword`" />
+  </section>
   <!-- Todo 一覧表示エリア -->
-  <section class="common"></section>
+  <section class="common">
+    <TodoList :todoList="showTodoList" @onDeleteTodo="handleDeleteTodo" />
+  </section>
 </template>
 
 <style scoped>
