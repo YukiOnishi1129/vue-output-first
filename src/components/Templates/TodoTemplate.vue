@@ -42,10 +42,6 @@ const handleDeleteTodo = (targetId, targetTitle) => {
     originTodoList.value = newTodoList
   }
 }
-
-const handleChangeSearchKeyword = (value) => {
-  searchKeyword.value = value
-}
 </script>
 
 <template>
@@ -58,11 +54,7 @@ const handleChangeSearchKeyword = (value) => {
   </section>
   <!-- Todo フォームエリア -->
   <section class="common">
-    <InputForm
-      :modelValue="searchKeyword"
-      :placeholder="`Search Keyword`"
-      @update:modelValue="handleChangeSearchKeyword"
-    />
+    <InputForm v-model="searchKeyword" :placeholder="`Search Keyword`" />
   </section>
   <!-- Todo 一覧表示エリア -->
   <section class="common">
