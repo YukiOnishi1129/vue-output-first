@@ -8,6 +8,6 @@ export default defineConfig({
   plugins: [vue()],
   base: process.env.NODE_ENV === 'production' ? `/${repositoryName}/` : '/',
   build: {
-    outDir: 'docs'
+    outDir: ''
   }
 })
