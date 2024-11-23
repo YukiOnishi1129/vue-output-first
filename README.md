@@ -6,6 +6,8 @@ composition apiのみの状態管理でTodoリストの基本的な機能を構�
 
 urlはこちら
 
+- https://yukionishi1129.github.io/vue-output-first/
+
 ## 目次
 
 1. 環境構築
