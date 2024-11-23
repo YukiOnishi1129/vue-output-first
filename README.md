@@ -1,5 +1,46 @@
-# Vue 3 + Vite
+# vue-output-first
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Vueアウトプットサンプル
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+composition apiのみの状態管理でTodoリストの基本的な機能を構築
+
+urlはこちら
+
+## 目次
+
+1. 環境構築
+2. アプリケーションの仕様
+
+## 1. 環境構築
+
+### 1-1. ライブラリ インストール
+
+```
+npm install
+```
+
+### 1-2. アプリケーション実行
+
+```
+npm run dev
+```
+
+## 2. アプリケーションの仕様
+
+### 2-1. 仕様
+
+- Todoリスト
+  - Todo一覧表示
+  - Todo検索処理
+  - Todo新規登録処理
+  - Todo削除処理
+
+### 2-2. 構成技術
+
+- vue: 3.5.10
+- vite: 5.4.8
+- @fortawesome/fontawesome-svg-core: 6.6.0
+- @fortawesome/free-brands-svg-icons: 6.6.0
+- @fortawesome/free-regular-svg-icons: 6.6.0
+- @fortawesome/free-solid-svg-icons: 6.6.0
+- @fortawesome/vue-fontawesome: 3.0.8
