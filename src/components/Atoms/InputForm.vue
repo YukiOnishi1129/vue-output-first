@@ -10,8 +10,7 @@ defineProps({
     type: String
   },
   onKeydown: {
-    type: Function,
-    required: true
+    type: Function
   }
 })
 

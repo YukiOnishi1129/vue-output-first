@@ -43,8 +43,8 @@ const handleDeleteTodo = (targetId, targetTitle) => {
   }
 }
 
-const handleChangeSearchKeyword = (e) => {
-  searchKeyword.value = e.target.value
+const handleChangeSearchKeyword = (value) => {
+  searchKeyword.value = value
 }
 </script>
 
