@@ -1,11 +1,21 @@
 <script setup>
-import { defineProps } from 'vue'
-const { inputValue, placeholder, handleChangeValue, handleKeyDown } = defineProps({
-  inputValue: String,
-  placeholder: String,
-  handleChangeValue: Function,
-  handleKeyDown: Function
+import { defineProps, defineEmits } from 'vue'
+
+defineProps({
+  modelValue: {
+    type: String,
+    required: true
+  },
+  placeholder: {
+    type: String
+  },
+  onKeydown: {
+    type: Function,
+    required: true
+  }
 })
+
+defineEmits(['update:modelValue'])
 </script>
 
 <template>
@@ -13,9 +23,9 @@ const { inputValue, placeholder, handleChangeValue, handleKeyDown } = defineProp
     type="text"
     class="input"
     :placeholder="placeholder"
-    :value="inputValue"
-    @input="handleChangeValue"
-    @keydown="handleKeyDown"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    @keydown="onKeydown"
   />
 </template>
 
