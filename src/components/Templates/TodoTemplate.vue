@@ -54,7 +54,7 @@ const handleChangeSearchKeyword = (e) => {
   </div>
   <!-- Todo追加エリア -->
   <section class="common">
-    <AddTodo v-model="addInputValue" :onAddTodo="handleAddTodo" />
+    <AddTodo v-model:addInputValue="addInputValue" :onAddTodo="handleAddTodo" />
   </section>
   <!-- Todo フォームエリア -->
   <section class="common">
